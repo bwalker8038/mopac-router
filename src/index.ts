@@ -1,0 +1,1 @@
+export { HistoryRouter } from "./router";
