@@ -15,7 +15,12 @@ export class HistoryRouter implements Router {
    * Method setups the router and event listeners
    */
   public start() {
-    this._navigate(this.currentLocation);
+    // if the router is already started, abort
+    if (this._isStarted) return;
+
+    this._isStarted = true;
+
+    this._navigate(this.currentLocation, true);
 
     window.addEventListener("routeChange", (e) => {
       this._navigate((e as CustomEvent).detail);
@@ -38,14 +43,21 @@ export class HistoryRouter implements Router {
   }
 
   /**
+   * Flag to prevent multiple start calls
+   */
+  private _isStarted = false;
+
+  /**
    * Method navigates to a new path
    *
    * @param path - the path to navigate to
+   * @param isRouterStart - flag to prevent multiple pushState events on first boot
    */
-  private _navigate(path: string) {
+  private _navigate(path: string, isRouterStart = false) {
     const route = this._lookupRoute(path);
 
-    history.pushState({}, "", path);
+    if (!isRouterStart) history.pushState({}, "", path);
+
     route.renderView();
   }
 

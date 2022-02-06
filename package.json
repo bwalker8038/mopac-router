@@ -1,7 +1,7 @@
 {
   "name": "mopac-router",
   "description": "A tiny client-side router",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "source": "src/index.ts",
   "main": "dist/main.js",
   "module": "dist/module.js",

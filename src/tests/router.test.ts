@@ -47,9 +47,14 @@ describe("HistoryRouter", () => {
       jest.clearAllMocks();
     });
 
+    it("should not attempt to setup the router more than once", () => {
+      router.start();
+      expect(HANDLER_ONE).toHaveBeenCalledTimes(1);
+    });
+
     it("should setup the router and event listeners", () => {
       expect(router.currentLocation).toBe(PATH_ONE);
-      expect(HANDLER_ONE).toHaveBeenCalled();
+      expect(HANDLER_ONE).toHaveBeenCalledTimes(1);
     });
 
     it("should navigate to a new route when a `routeChange` event is triggered", () => {
