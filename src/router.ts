@@ -84,6 +84,9 @@ export class HistoryRouter implements Router {
     return route;
   }
 
+  /**
+   * Getter returns the current location
+   */
   get currentLocation() {
     return `${window.location.pathname}${window.location.hash}`;
   }

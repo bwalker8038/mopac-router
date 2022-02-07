@@ -50,11 +50,13 @@ router.route("/about", () => {
 
 #### Dynamic segments
 
-Dynamic segmenting is also supported. The segments are passed to the handler as a positional arguments.
+Dynamic segmenting is also supported. The segments are passed to the handler as an object.
 
-`router.route('/user/:userId', (userId) => console.log("hello))`
+```js
+router.route("/user/:userId", ({ userId }) => console.log(`hello, ${user}`));
+```
 
-As of right now, query strings are not supported, but are on the roadmap to be added next.
+Search params can be accessed through the search property on the browser's `Location` object.
 
 #### Starting the router
 
