@@ -56,7 +56,7 @@ export class HistoryRouter implements Router {
   private _navigate(path: string, isRouterStart = false) {
     const route = this._lookupRoute(path);
 
-    if (!isRouterStart) history.pushState({}, "", path);
+    if (!isRouterStart) window.history.pushState({}, "", path);
 
     route.renderView();
   }
